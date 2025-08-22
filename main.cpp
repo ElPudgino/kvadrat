@@ -1,0 +1,61 @@
+#include <stdio.h>
+#include <math.h>
+#include <cassert>
+#include "solvers.h"
+#include "tools.h"
+#include "constants.h"
+
+int RequestInput(double* a, double* b, double* c)
+{
+    assert(a != b);
+    assert(b != c);
+    assert(a != c);
+
+    printf("Quadratic equation solver\n----------------\n");
+    printf("Enter equation coefficients\n");
+
+    GetInputNumber(a);
+    GetInputNumber(b);
+    GetInputNumber(c);
+
+    return 1;
+}
+
+int main()
+{
+    double a, b, c = 0;
+    double x1, x2 = 0;
+    int RootCount = 0;
+
+    RequestInput(&a, &b, &c);
+
+    if (CloseToZero(a))
+    {
+        RootCount = SolveLinear(b, c, &x1);
+    }
+    else
+    {
+        RootCount = SolveQuadratic(a, b, c, &x1, &x2);
+    }
+
+    switch (RootCount)
+    {
+        case 0:
+            printf("No roots\n");
+        break;
+        case 1:
+            printf("One root: %lf \n", x1);
+        break;
+        case 2:
+            printf("Two roots: %lf, %lf \n", x1, x2);
+        break;
+        case INF_ROOTS:
+            printf("Infinite roots\n");
+        break;
+
+    }
+
+    return 0;
+}
+
+
