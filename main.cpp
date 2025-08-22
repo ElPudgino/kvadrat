@@ -34,10 +34,6 @@ int main()
 
     RequestInput(&a, &b, &c);
 
-    assert(isfinite(a));
-    assert(isfinite(b));
-    assert(isfinite(c));
-
     RootCount = SolveQuadratic(a, b, c, &x1, &x2);
 
     switch (RootCount)
