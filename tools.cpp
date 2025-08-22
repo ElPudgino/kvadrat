@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <math.h>
+#include <cassert>
 #include "constants.h"
 
 int ClearInput()
@@ -10,17 +11,17 @@ int ClearInput()
 
 int GetInputNumber(double* num)
 {
-    if (scanf("%lf", num) < 1)
+    assert(num);
+    int res = 0;
+    while (true)
     {
-        printf("Invalid input. Enter a number\n");
-        ClearInput();
-        GetInputNumber(num);
-    }
-    else if (!isfinite(*num))
-    {
+        res = scanf("%lf", num);
+        if (res == 1 && isfinite(*num))
+        {
+            break;
+        }
         printf("Invalid input. Enter a finite number\n");
         ClearInput();
-        GetInputNumber(num);
     }
 
     return 0;

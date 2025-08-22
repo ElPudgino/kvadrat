@@ -6,6 +6,7 @@
 int SolveLinear(double a, double b,
                 double* x)
 {
+    assert(x);
     assert(isfinite(a));
     assert(isfinite(b));
 
@@ -27,14 +28,15 @@ int SolveLinear(double a, double b,
     }
 }
 
-int SolveQuadratic(double a, double b, double c,
-                   double* x1, double* x2)
+int SolveQuadraticInternal(double a, double b, double c,
+                           double* x1, double* x2)
 {
     assert(x1 != x2);
+    assert(x1);
+    assert(x2);
     assert(isfinite(a));
     assert(isfinite(b));
     assert(isfinite(c));
-    assert(!CloseToZero(a));
 
     double D = b*b - 4*a*c;
     if (D < 0)
@@ -52,5 +54,18 @@ int SolveQuadratic(double a, double b, double c,
     else
     {
         return 2;
+    }
+}
+
+int SolveQuadratic(double a, double b, double c,
+                   double* x1, double* x2)
+{
+    if (CloseToZero(a))
+    {
+        return SolveLinear(b, c, x1);
+    }
+    else
+    {
+        return SolveQuadraticInternal(a, b, c, x1, x2);
     }
 }

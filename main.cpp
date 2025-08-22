@@ -7,6 +7,9 @@
 
 int RequestInput(double* a, double* b, double* c)
 {
+    assert(a);
+    assert(b);
+    assert(c);
     assert(a != b);
     assert(b != c);
     assert(a != c);
@@ -21,6 +24,8 @@ int RequestInput(double* a, double* b, double* c)
     return 1;
 }
 
+// enum
+
 int main()
 {
     double a, b, c = 0;
@@ -29,14 +34,11 @@ int main()
 
     RequestInput(&a, &b, &c);
 
-    if (CloseToZero(a))
-    {
-        RootCount = SolveLinear(b, c, &x1);
-    }
-    else
-    {
-        RootCount = SolveQuadratic(a, b, c, &x1, &x2);
-    }
+    assert(isfinite(a));
+    assert(isfinite(b));
+    assert(isfinite(c));
+
+    RootCount = SolveQuadratic(a, b, c, &x1, &x2);
 
     switch (RootCount)
     {
