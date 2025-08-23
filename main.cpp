@@ -4,6 +4,7 @@
 #include "solvers.h"
 #include "tools.h"
 #include "constants.h"
+#include "tests.h"
 
 int RequestInput(double* a, double* b, double* c)
 {
@@ -32,19 +33,24 @@ int main()
     double x1, x2 = 0;
     int RootCount = 0;
 
+    if (TestQuadraticSolver())
+    {
+        printf("Solver test: OK\n");
+    }
+
     RequestInput(&a, &b, &c);
 
     RootCount = SolveQuadratic(a, b, c, &x1, &x2);
 
     switch (RootCount)
     {
-        case 0:
+        case NO_ROOTS:
             printf("No roots\n");
         break;
-        case 1:
+        case ONE_ROOT:
             printf("One root: %lf \n", x1);
         break;
-        case 2:
+        case TWO_ROOTS:
             printf("Two roots: %lf, %lf \n", x1, x2);
         break;
         case INF_ROOTS:

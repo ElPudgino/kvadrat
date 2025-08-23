@@ -2,6 +2,7 @@
 #include <cassert>
 #include "tools.h"
 #include "constants.h"
+#include "solvers.h"
 
 int SolveLinear(double a, double b,
                 double* x)
@@ -18,13 +19,13 @@ int SolveLinear(double a, double b,
         }
         else
         {
-            return 0;
+            return NO_ROOTS;
         }
     }
     else
     {
         *x = -b / a;
-        return 1;
+        return ONE_ROOT;
     }
 }
 
@@ -41,7 +42,7 @@ int SolveQuadraticInternal(double a, double b, double c,
     double D = b*b - 4*a*c;
     if (D < 0)
     {
-        return 0;
+        return NO_ROOTS;
     }
     double rtD = sqrt(D);
     *x1 = (-b - rtD) / (2*a);
@@ -49,11 +50,11 @@ int SolveQuadraticInternal(double a, double b, double c,
 
     if (CloseToZero(D))
     {
-        return 1;
+        return ONE_ROOT;
     }
     else
     {
-        return 2;
+        return TWO_ROOTS;
     }
 }
 
