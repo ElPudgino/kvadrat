@@ -3,6 +3,15 @@
 #include <cassert>
 #include "constants.h"
 
+int ClearInput();
+
+int GetInputNumber(double* num);
+
+bool CloseToZero(double);
+
+void PolishOutput(double* in);
+
+
 int ClearInput()
 {
     while (getchar() != '\n');
@@ -29,5 +38,14 @@ int GetInputNumber(double* num)
 
 bool CloseToZero(double num)
 {
-    return fabs(num) < EPSILON;
+    assert(isfinite(num));
+    return (fabs(num) < EPSILON);
+}
+
+void PolishOutput(double* in)
+{
+    if (CloseToZero(*in))
+    {
+        *in = 0;
+    }
 }

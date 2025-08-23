@@ -7,4 +7,6 @@ int GetInputNumber(double*);
 
 int CloseToZero(double);
 
+void PolishOutput(double*);
+
 #endif

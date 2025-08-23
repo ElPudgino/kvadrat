@@ -1,10 +1,16 @@
 #include <math.h>
 #include <cassert>
+#include <stdio.h>
 #include "tools.h"
 #include "constants.h"
 #include "solvers.h"
 
-int SolveLinear(double a, double b,
+int SolveLinearInternal(double a, double b, double* x);
+
+int SolveQuadraticInternal(double a, double b, double c,
+                           double* x1, double* x2);
+
+int SolveLinearInternal(double a, double b,
                 double* x)
 {
     assert(x);
@@ -58,12 +64,18 @@ int SolveQuadraticInternal(double a, double b, double c,
     }
 }
 
+int SolveLinear(double a, double b,
+                double* x)
+{
+    return SolveLinearInternal(a, b, x);
+}
+
 int SolveQuadratic(double a, double b, double c,
                    double* x1, double* x2)
 {
     if (CloseToZero(a))
     {
-        return SolveLinear(b, c, x1);
+        return SolveLinearInternal(b, c, x1);
     }
     else
     {

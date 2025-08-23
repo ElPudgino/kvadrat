@@ -6,6 +6,9 @@
 #include "constants.h"
 #include "tests.h"
 
+int RequestInput(double* a, double* b, double* c);
+
+
 int RequestInput(double* a, double* b, double* c)
 {
     assert(a);
@@ -37,6 +40,9 @@ int main()
 
     RootCount = SolveQuadratic(a, b, c, &x1, &x2);
 
+    PolishOutput(&x1);
+    PolishOutput(&x2);
+
     switch (RootCount)
     {
         case NO_ROOTS:
@@ -51,7 +57,9 @@ int main()
         case INF_ROOTS:
             printf("Infinite roots\n");
         break;
-
+        default:
+            printf("Error: Unexpected root count");
+        break;
     }
 
     return 0;
