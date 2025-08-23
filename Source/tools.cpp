@@ -3,13 +3,14 @@
 #include <cassert>
 #include "constants.h"
 
-int ClearInput();
+
+int ClearInput(void);
 
 int GetInputNumber(double* num);
 
-bool CloseToZero(double);
+bool CloseToZero(double num);
 
-void PolishOutput(double* in);
+void PolishOutput(double* num);
 
 
 int ClearInput()
@@ -42,10 +43,10 @@ bool CloseToZero(double num)
     return (fabs(num) < EPSILON);
 }
 
-void PolishOutput(double* in)
+void PolishOutput(double* num)
 {
-    if (CloseToZero(*in))
+    if (CloseToZero(*num))
     {
-        *in = 0;
+        *num = 0;
     }
 }
