@@ -25,18 +25,13 @@ int RequestInput(double* a, double* b, double* c)
     return 1;
 }
 
-// enum
-
 int main()
 {
     double a, b, c = 0;
     double x1, x2 = 0;
     int RootCount = 0;
 
-    if (TestQuadraticSolver())
-    {
-        printf("Solver test: OK\n");
-    }
+    TestQuadraticSolver();
 
     RequestInput(&a, &b, &c);
 

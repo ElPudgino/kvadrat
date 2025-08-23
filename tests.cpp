@@ -20,10 +20,18 @@ void TestSingle(double a, double b, double c,
 int TestQuadraticSolver()
 {
     int res = 1;
-    TestSingle(0,0,0, 0,0, INF_ROOTS, &res);
-    TestSingle(1,0,0, 0,0, ONE_ROOT, &res);
-    TestSingle(0,1,0, 0,0, ONE_ROOT, &res);
-    TestSingle(1,1,0, -1,0, TWO_ROOTS, &res);
-    TestSingle(1,-5,6, 2,3, TWO_ROOTS, &res);
+
+    TestSingle(0,  0, 0,  0, 0, INF_ROOTS, &res);
+    TestSingle(1,  0, 0,  0, 0, ONE_ROOT,  &res);
+    TestSingle(0,  1, 1, -1, 0, ONE_ROOT,  &res);
+    TestSingle(0,  1, 0,  0, 0, ONE_ROOT,  &res);
+    TestSingle(1,  1, 0, -1, 0, TWO_ROOTS, &res);
+    TestSingle(1, -5, 6,  2, 3, TWO_ROOTS, &res);
+
+    if (res)
+    {
+        printf("Solver test: OK\n");
+    }
+
     return res;
 }

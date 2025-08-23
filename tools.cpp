@@ -29,5 +29,5 @@ int GetInputNumber(double* num)
 
 bool CloseToZero(double num)
 {
-    return fabs(num) < ALMOST_ZERO;
+    return fabs(num) < EPSILON;
 }
