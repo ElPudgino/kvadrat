@@ -3,14 +3,15 @@
 
 typedef struct
 {
-    void** arr;
+    void* arr;
     size_t capacity;
     size_t count;
+    size_t elem_size;
 } list;
 
 
 
-void List_Init(list* list_p);
+void List_Init(list* list_p, size_t element_size);
 
 int List_AddElement(list* list_p, void* elem);
 
@@ -22,6 +23,8 @@ void List_Expand(list* list_p);
 
 void List_Begone(list* list_p);
 
+
+#define ListRemoveAt(lst,idx) List_RemoveElementAt(&lst, idx)
 
 #define ListAdd(lst,elm) List_AddElement(&lst, &elm)
 

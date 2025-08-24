@@ -7,7 +7,7 @@
 int TestList()
 {
     list t_list;
-    List_Init(&t_list);
+    List_Init(&t_list, sizeof(int));
 
     int res = 1;
 
@@ -29,13 +29,31 @@ int TestList()
     assert(ListGet(t_list, 0, int) == 52);
 
 
-    List_RemoveElementAt(&t_list, 0);
+    ListRemoveAt(t_list, 0);
 
     assert(ListGet(t_list, 0, int) == 69);
 
+
+    int k = 0;
+
+    for (k = 0; k < 100; k += 1)
+    {
+        ListAdd(t_list, k);
+    }
+    assert(t_list.count == k+1);
+
+    for (k = 0; k < t_list.count; k += 2)
+    {
+        ListRemoveAt(t_list, k);
+    }
+    assert(ListGet(t_list, 0, int) == 0);
+    assert(ListGet(t_list, 1, int) == 1);
+    assert(ListGet(t_list, 2, int) == 3);
+
+
     if (res)
     {
-        printf("List test: OK");
+        printf("List test: OK\n");
     }
 
     return res;
