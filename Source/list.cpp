@@ -89,7 +89,7 @@ void List_Expand(list* list_p)
 void List_Begone(list* list_p)
 {
     assert(list_p);
-    free(list_p);
+    free(list_p -> arr);
 }
 
 

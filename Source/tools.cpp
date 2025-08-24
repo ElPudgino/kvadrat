@@ -2,16 +2,7 @@
 #include <math.h>
 #include <cassert>
 #include "constants.h"
-
-
-int ClearInput(void);
-
-int GetInputNumber(double* num);
-
-bool CloseToZero(double num);
-
-void PolishOutput(double* num);
-
+#include "tools.h"
 
 int ClearInput()
 {
@@ -37,7 +28,7 @@ int GetInputNumber(double* num)
     return 0;
 }
 
-bool CloseToZero(double num)
+int CloseToZero(double num)
 {
     assert(isfinite(num));
     return (fabs(num) < EPSILON);
@@ -49,4 +40,9 @@ void PolishOutput(double* num)
     {
         *num = 0;
     }
+}
+
+void ProcessArgs()
+{
+
 }

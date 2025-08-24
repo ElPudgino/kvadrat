@@ -23,11 +23,14 @@ void List_Expand(list* list_p);
 
 void List_Begone(list* list_p);
 
+#define ListInit(lst, szt) List_Init(&lst, szt)
 
 #define ListRemoveAt(lst,idx) List_RemoveElementAt(&lst, idx)
 
 #define ListAdd(lst,elm) List_AddElement(&lst, &elm)
 
 #define ListGet(lst,idx,type) *(type*)List_GetElementAt(&lst, idx)
+
+#define ListBegone(lst) List_Begone(&lst)
 
 #endif

@@ -29,7 +29,7 @@ int RequestInput(double* a, double* b, double* c)
     return 1;
 }
 
-int main()
+int main(int argc, char* argv)
 {
     double a, b, c = 0;
     double x1, x2 = 0;

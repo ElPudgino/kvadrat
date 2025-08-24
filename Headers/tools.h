@@ -1,6 +1,13 @@
 #ifndef TOOLS_H
 #define TOOLS_H
 
+typedef struct
+{
+    int test_list;
+    int test_solver;
+    int run_main;
+} ProgramParams;
+
 /*! Clears input buffer
 */
 int ClearInput(void);

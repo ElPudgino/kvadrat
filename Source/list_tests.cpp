@@ -34,7 +34,7 @@ int TestList()
     assert(ListGet(t_list, 0, int) == 69);
 
 
-    int k = 0;
+    size_t k = 0;
 
     for (k = 0; k < 100; k += 1)
     {
@@ -50,6 +50,7 @@ int TestList()
     assert(ListGet(t_list, 1, int) == 1);
     assert(ListGet(t_list, 2, int) == 3);
 
+    ListBegone(t_list);
 
     if (res)
     {

@@ -33,10 +33,10 @@ int SolveLinear(double a, double b, double* x);
 
 enum RootsCount
 {
-    NO_ROOTS,
-    ONE_ROOT,
-    TWO_ROOTS,
-    INF_ROOTS
+    NO_ROOTS = 0,
+    ONE_ROOT = 1,
+    TWO_ROOTS = 2,
+    INF_ROOTS = -1
 };
 
 #endif
