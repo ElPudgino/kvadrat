@@ -9,6 +9,7 @@ void TestSolverSingle(double a, double b, double c,
 int TestQuadraticSolver();
 
 
+
 void TestSolverSingle(double a, double b, double c,
                       double x1_res, double x2_res, int nRoots_res, int* res)
 {
@@ -19,7 +20,7 @@ void TestSolverSingle(double a, double b, double c,
     {
         printf("Failed: SolveQuadratic(%lf, %lf, %lf) -> %i (%lf, %lf); Expected %i (%lf, %lf)\n",
                                          a, b, c, nRoots, x1, x2, nRoots_res, x1_res, x2_res);
-        *res = *res * 0;
+        *res = 0;
     }
 }
 

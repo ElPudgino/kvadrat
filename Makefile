@@ -5,22 +5,36 @@ CXXFLAGS += -I Headers
 o = ObjectFiles/
 s = Source/
 
-all : prog
+all : prog testing
+	$(CXX) $(CXXFLAGS) $(o)tools.o $(o)solvers.o $(o)main.o $(o)tests.o $(o)list.o $(o)list_tests.o -o prog
 
-prog : tools.o solvers.o main.o tests.o
-	$(CXX) $(CXXFLAGS) $(o)tools.o $(o)solvers.o $(o)main.o $(o)tests.o -o prog
+
+prog : tools.o solvers.o main.o list.o
+
+list.o : $(s)list.cpp
+	$(CXX) $(CXXFLAGS) -c $(s)list.cpp -o $(o)list.o
 
 tools.o : $(s)tools.cpp
 	$(CXX) $(CXXFLAGS) -c $(s)tools.cpp -o $(o)tools.o
 
-tests.o : $(s)tests.cpp
-	$(CXX) $(CXXFLAGS) -c $(s)tests.cpp -o $(o)tests.o
+readtests.o : $(s)readtests.cpp
+	$(CXX) $(CXXFLAGS) -c $(s)readtests.cpp -o $(o)readtests.o
 
 main.o : $(s)main.cpp
 	$(CXX) $(CXXFLAGS) -c $(s)main.cpp -o $(o)main.o
 
 solvers.o : $(s)solvers.cpp
 	$(CXX) $(CXXFLAGS) -c $(s)solvers.cpp -o $(o)solvers.o
+
+
+testing : tests.o list_tests.o
+
+tests.o : $(s)tests.cpp
+	$(CXX) $(CXXFLAGS) -c $(s)tests.cpp -o $(o)tests.o
+
+list_tests.o : $(s)list_tests.cpp
+	$(CXX) $(CXXFLAGS) -c $(s)list_tests.cpp -o $(o)list_tests.o
+
 
 clean:
 	rm -f $(o)tools.o $(o)solvers.o $(o)main.o $(o)tests.o

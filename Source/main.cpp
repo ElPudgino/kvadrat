@@ -5,6 +5,7 @@
 #include "tools.h"
 #include "constants.h"
 #include "tests.h"
+#include "list_tests.h"
 
 int RequestInput(double* a, double* b, double* c);
 
@@ -35,6 +36,7 @@ int main()
     int RootCount = 0;
 
     TestQuadraticSolver();
+    TestList();
 
     RequestInput(&a, &b, &c);
 
