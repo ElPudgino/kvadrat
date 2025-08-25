@@ -7,7 +7,7 @@
 int TestList()
 {
     list t_list;
-    List_Init(&t_list, sizeof(int));
+    ListInit(t_list, int);
 
     int res = 1;
 

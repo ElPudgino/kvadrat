@@ -1,16 +1,18 @@
 #ifndef TOOLS_H
 #define TOOLS_H
 
+/*! @brief Holds info about starting args
+*/
 typedef struct
 {
     int test_list;
     int test_solver;
-    int run_main;
+    int skip_main;
 } ProgramParams;
 
-/*! Clears input buffer
+/*! @brief Clears input buffer
 */
-int ClearInput(void);
+void ClearInput(void);
 
 /*! @brief Scans input for a finite double
 *
@@ -24,7 +26,7 @@ int GetInputNumber(double*);
 *
 * @param[in] num Double to be checked
 *
-* returns true if absolute value of num is smaller then EPSILON
+* @return 1 if absolute value of num is smaller then EPSILON 0 otherwise
 */
 int CloseToZero(double);
 
@@ -35,5 +37,26 @@ int CloseToZero(double);
 * Round num to zero if it is negligibly small
 */
 void PolishOutput(double*);
+
+/*! @brief Checks if two strings are equal
+*
+* @param[in] str1 First string
+* @param[in] str2 Second constant string
+*
+* Both strings MUST end with a null terminator
+* Checks each chars one by one
+*
+* @return 1 if equal 0 otherwise
+*/
+int CompareStrings(char* str1, char const* str2);
+
+/*! @brief Parses program arguments
+*
+* @param[in] argc Argument count
+* @param[in] argv Array of pointers to arguments
+*
+* @return Struct with field set to 1 or 0 depending on args
+*/
+ProgramParams ProcessArgs(int argc ,char** argv);
 
 #endif

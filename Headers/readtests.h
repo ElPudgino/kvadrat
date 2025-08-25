@@ -3,10 +3,10 @@
 #ifndef READTESTS_H
 #define READTESTS_H
 
-size_t CountTests(FILE* file);
-
-void ReadTestSingle(FILE* file, list* list_ptr);
-
+/*! @brief Reads tests data from file
+*
+* @param[in] list_ptr Pointer to list where read data will be stored
+*/
 void ReadTestData(list* list_ptr);
 
 

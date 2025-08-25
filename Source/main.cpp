@@ -9,6 +9,29 @@
 
 int RequestInput(double* a, double* b, double* c);
 
+void Run_App();
+
+
+int main(int argc, char** argv)
+{
+    ProgramParams p_params = ProcessArgs(argc, argv);
+
+    if (p_params.test_solver)
+    {
+        TestQuadraticSolver();
+    }
+    if (p_params.test_list)
+    {
+        TestList();
+    }
+    if (!p_params.skip_main)
+    {
+        Run_App();
+    }
+
+    return 0;
+}
+
 
 int RequestInput(double* a, double* b, double* c)
 {
@@ -29,14 +52,11 @@ int RequestInput(double* a, double* b, double* c)
     return 1;
 }
 
-int main(int argc, char* argv)
+void Run_App()
 {
     double a, b, c = 0;
     double x1, x2 = 0;
     int RootCount = 0;
-
-    TestQuadraticSolver();
-    TestList();
 
     RequestInput(&a, &b, &c);
 
@@ -63,8 +83,7 @@ int main(int argc, char* argv)
             printf("Error: Unexpected root count");
         break;
     }
-
-    return 0;
 }
+
 
 

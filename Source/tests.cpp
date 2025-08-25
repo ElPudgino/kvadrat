@@ -24,22 +24,9 @@ void TestSolverSingle(TestParams tps, int* res)
 int TestQuadraticSolver()
 {
     int res = 1;
-/*
-    TestSolverSingle(0,  0,  0,  0, 0, INF_ROOTS, &res);
-    TestSolverSingle(1,  0,  0,  0, 0, ONE_ROOT,  &res);
-    TestSolverSingle(0,  1,  1, -1, 0, ONE_ROOT,  &res);
-    TestSolverSingle(0, -4, 68, 17, 0, ONE_ROOT,  &res);
-    TestSolverSingle(0,  1,  0,  0, 0, ONE_ROOT,  &res);
-    TestSolverSingle(1,  1,  0, -1, 0, TWO_ROOTS, &res);
-    TestSolverSingle(1, -5,  6,  2, 3, TWO_ROOTS, &res);
-
-    TestSolverSingle(0,     68,    -4,  0.058823529411764, 0                , ONE_ROOT,  &res);
-    TestSolverSingle(1e5,  1e4, -2500, -0.215831239517770, 0.115831239517770, TWO_ROOTS, &res);
-    TestSolverSingle(1e5, -1e4, -1e6 , -3.11267292017369 , 3.21267292017369 , TWO_ROOTS, &res);
-
-*/
     list t_list;
-    ListInit(t_list, sizeof(TestParams));
+
+    ListInit(t_list, TestParams);
 
     ReadTestData(&t_list);
 
@@ -55,6 +42,7 @@ int TestQuadraticSolver()
         printf("Solver test: OK\n");
     }
 
+    ListBegone(t_list);
 
     return res;
 }
