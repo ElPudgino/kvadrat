@@ -1,6 +1,8 @@
 #ifndef CMDS_DEF_H
 #define CMDS_DEF_H
 
+
+
 command DefSolve();
 
 command DefCoef();
@@ -21,5 +23,15 @@ void TestCommand(list* args);
 
 void ScamCommand(list* args);
 
+
+static command Solve{"--solve", "-s", &SolveCommand, 0};
+
+static command Coef{"--coef", "-c", &CoefCommand, 3};
+
+static command File{"--file", "-f", &FileCommand, 1};
+
+static command Test{"--test", "-t", &TestCommand, 0};
+
+static command Scam{"--scam", "-sc", &ScamCommand, 0};
 
 #endif

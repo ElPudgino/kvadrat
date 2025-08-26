@@ -16,12 +16,8 @@ int CaptchaCheck()
     b = RandomRange(-1e4, 1e4);
     c = RandomRange(-1e5, 1e5);
 
-    char sign1, sign2, sign3 = ' ';
+    char sign2, sign3 = ' ';
 
-    if (a > 0)
-    {
-        sign1 = '+';
-    }
     if (b > 0)
     {
         sign2 = '+';
@@ -31,7 +27,7 @@ int CaptchaCheck()
         sign3 = '+';
     }
 
-    printf("Solve %c%dx^2%c%dx%c%d = 0\n", sign1, a, sign2, b, sign3, c);
+    printf("Solve %dx^2%c%dx%c%d = 0\n", a, sign2, b, sign3, c);
 
     double roots_i_d = 0;
 

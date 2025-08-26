@@ -15,20 +15,15 @@ list SetupCommands(void)
     list Commands;
     ListInit(Commands, command);
 
-    command solve = DefSolve();
-    ListAdd(Commands, solve);
+    ListAdd(Commands, Solve);
 
-    command coef = DefCoef();
-    ListAdd(Commands, coef);
+    ListAdd(Commands, Coef);
 
-    command file = DefFile();
-    ListAdd(Commands, file);
+    ListAdd(Commands, File);
 
-    command test = DefTest();
-    ListAdd(Commands, test);
+    ListAdd(Commands, Test);
 
-    command scam = DefScam();
-    ListAdd(Commands, scam);
+    ListAdd(Commands, Scam);
 
     return Commands;
 }

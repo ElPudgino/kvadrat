@@ -12,30 +12,9 @@
 #include "scam.h"
 
 
-command DefSolve()
-{
-    command solve = {};
-    solve.name = "--solve";
-    solve.short_name = "-s";
-    solve.f_ptr = &SolveCommand;
-    solve.args_count = 0;
-    return solve;
-}
-
 void SolveCommand(list* args)
 {
     Run_App();
-}
-
-
-command DefCoef()
-{
-    command coef = {};
-    coef.name = "--coef";
-    coef.short_name = "-c";
-    coef.f_ptr = &CoefCommand;
-    coef.args_count = 3;
-    return coef;
 }
 
 void CoefCommand(list* args)
@@ -55,46 +34,14 @@ void CoefCommand(list* args)
     OutputRoots(x1, x2, nRoots);
 }
 
-
-command DefFile()
-{
-    command file = {};
-    file.name = "--file";
-    file.short_name = "-f";
-    file.f_ptr = &FileCommand;
-    file.args_count = 1;
-    return file;
-}
-
 void FileCommand(list* args)
 {
     TestQuadraticSolver(ListGet(*args, 0, char*));
 }
 
-
-command DefTest()
-{
-    command test = {};
-    test.name = "--test";
-    test.short_name = "-t";
-    test.f_ptr = &TestCommand;
-    test.args_count = 0;
-    return test;
-}
-
 void TestCommand(list* args)
 {
     TestList();
-}
-
-command DefScam()
-{
-    command scam = {};
-    scam.name = "--scam";
-    scam.short_name = "-sc";
-    scam.f_ptr = &ScamCommand;
-    scam.args_count = 0;
-    return scam;
 }
 
 void ScamCommand(list* args)
