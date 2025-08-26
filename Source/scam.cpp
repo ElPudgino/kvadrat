@@ -5,10 +5,10 @@
 
 int CaptchaCheck()
 {
-    int a, b, c = 0;
+    int a = 0, b = 0, c = 0;
     int roots_i = 0;
-    double x1_i, x2_i = 0;
-    double x1, x2 = 0;
+    double x1_i = 0, x2_i = 0;
+    double x1 = 0, x2 = 0;
 
     int roots = 0;
 
@@ -16,7 +16,7 @@ int CaptchaCheck()
     b = RandomRange(-1e4, 1e4);
     c = RandomRange(-1e5, 1e5);
 
-    char sign2, sign3 = ' ';
+    char sign2 = ' ', sign3 = ' ';
 
     if (b > 0)
     {

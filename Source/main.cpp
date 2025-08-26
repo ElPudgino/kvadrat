@@ -13,8 +13,6 @@
 #include "passert.h"
 
 
-int RequestInput(double* a, double* b, double* c);
-
 
 
 int main(int argc, char** argv)
@@ -33,8 +31,8 @@ int main(int argc, char** argv)
 
 void Run_App()
 {
-    double a, b, c = 0;
-    double x1, x2 = 0;
+    double a = 0, b = 0, c = 0;
+    double x1 = 0, x2 = 0;
     int RootCount = 0;
 
     RequestInput(&a, &b, &c);

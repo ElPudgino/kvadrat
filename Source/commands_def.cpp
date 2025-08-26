@@ -23,13 +23,13 @@ void CoefCommand(list* args)
     assert(args);
     assert(args->count == 3);
 
-    double a, b, c = 0;
+    double a = 0, b = 0, c = 0;
     char** e1 = NULL;
     a = strtod(ListGet(*args, 0, char*),e1);
     b = strtod(ListGet(*args, 1, char*),e1);
     c = strtod(ListGet(*args, 2, char*),e1);
 
-    double x1, x2 = 0;
+    double x1 = 0, x2 = 0;
     int nRoots = SolveQuadratic(a, b, c, &x1, &x2);
 
     OutputRoots(x1, x2, nRoots);
@@ -51,8 +51,8 @@ void TestCommand(list* args)
 void ScamCommand(list* args)
 {
     assert(args);
-    double a, b, c = 0;
-    double x1, x2 = 0;
+    double a = 0, b = 0, c = 0;
+    double x1 = 0, x2 = 0;
     int RootCount = 0;
 
     RequestAnswer(&a, &b, &c);

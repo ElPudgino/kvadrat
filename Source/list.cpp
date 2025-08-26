@@ -8,7 +8,7 @@ void List_Init(list* list_p, size_t element_size)
 {
     assert(list_p);
     list_p -> elem_size = element_size;
-    list_p -> arr = malloc(list_p -> elem_size * 2);
+    list_p -> arr = calloc(2, list_p -> elem_size);
 
     assert(list_p -> arr);
 
