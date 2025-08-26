@@ -1,3 +1,5 @@
+#define MAIN_FILE
+
 #include <stdio.h>
 #include <math.h>
 #include <cassert>
@@ -8,6 +10,8 @@
 #include "list_tests.h"
 #include "commands.h"
 #include "run_app.h"
+#include "passert.h"
+
 
 int RequestInput(double* a, double* b, double* c);
 
@@ -21,7 +25,6 @@ int main(int argc, char** argv)
     ProcessArgs(&cmds, argc,  argv);
 
     ListBegone(cmds);
-
 
     printf("\nxXx_COMMIT GITHUB_xXx\n");
     return 0;

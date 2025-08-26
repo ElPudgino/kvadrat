@@ -2,7 +2,7 @@
 #include <math.h>
 #include <stdlib.h>
 #include <time.h>
-#include <cassert>
+#include "passert.h"
 #include "constants.h"
 #include "tools.h"
 #include "list.h"
@@ -16,7 +16,7 @@ void ClearInput()
 
 int GetInputNumber(double* num)
 {
-    assert(num);
+    h_passert(num);
     int res = 0;
     while (true)
     {
@@ -34,12 +34,13 @@ int GetInputNumber(double* num)
 
 int CloseToZero(double num)
 {
-    assert(isfinite(num));
+    h_passert(isfinite(num));
     return (fabs(num) < EPSILON);
 }
 
 void PolishOutput(double* num)
 {
+    h_passert(num);
     if (CloseToZero(*num))
     {
         *num = 0;
@@ -48,8 +49,8 @@ void PolishOutput(double* num)
 
 int CompareStrings(char* str1, const char* str2)
 {
-    assert(str1);
-    assert(str2);
+    h_passert(str1);
+    h_passert(str2);
 
     int index = 0;
 
@@ -105,12 +106,12 @@ int RandomRange(int min, int max)
 
 int RequestInput(double* a, double* b, double* c)
 {
-    assert(a);
-    assert(b);
-    assert(c);
-    assert(a != b);
-    assert(b != c);
-    assert(a != c);
+    h_passert(a);
+    h_passert(b);
+    h_passert(c);
+    h_passert(a != b);
+    h_passert(b != c);
+    h_passert(a != c);
 
     printf("Enter equation coefficients\n");
 
@@ -121,3 +122,20 @@ int RequestInput(double* a, double* b, double* c)
     return 1;
 }
 
+int RequestAnswer(double* a, double* b, double* c)
+{
+    h_passert(a);
+    h_passert(b);
+    h_passert(c);
+    h_passert(a != b);
+    h_passert(b != c);
+    h_passert(a != c);
+
+    printf("Enter root amount, x1, x2\n");
+
+    GetInputNumber(a);
+    GetInputNumber(b);
+    GetInputNumber(c);
+
+    return 1;
+}

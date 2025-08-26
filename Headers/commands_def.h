@@ -23,6 +23,8 @@ void TestCommand(list* args);
 
 void ScamCommand(list* args);
 
+void DebugCommand(list* args);
+
 
 static command Solve{"--solve", "-s", &SolveCommand, 0};
 
@@ -33,5 +35,7 @@ static command File{"--file", "-f", &FileCommand, 1};
 static command Test{"--test", "-t", &TestCommand, 0};
 
 static command Scam{"--scam", "-sc", &ScamCommand, 0};
+
+static command Debug{"--debug", "-d", &DebugCommand, 0};
 
 #endif

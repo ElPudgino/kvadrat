@@ -25,6 +25,8 @@ list SetupCommands(void)
 
     ListAdd(Commands, Scam);
 
+    ListAdd(Commands, Debug);
+
     return Commands;
 }
 

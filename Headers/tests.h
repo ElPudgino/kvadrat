@@ -1,7 +1,8 @@
 #ifndef TESTS_H
 #define TESTS_H
 
-
+/*! @brief Struct used to encapsulate test data
+*/
 typedef struct
 {
     double a, b, c;
@@ -10,6 +11,9 @@ typedef struct
 } TestParams;
 
 /*! @brief Tests quadratic solver using predefined values
+*
+* @param[in] test_file Name of the file with tests
+*
 * @return 1 if all tests are OK 0 otherwise
 */
 int TestQuadraticSolver(char* test_file);

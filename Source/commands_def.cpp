@@ -10,6 +10,7 @@
 #include "tests.h"
 #include "list_tests.h"
 #include "scam.h"
+#include "passert.h"
 
 
 void SolveCommand(list* args)
@@ -36,21 +37,25 @@ void CoefCommand(list* args)
 
 void FileCommand(list* args)
 {
+    assert(args);
+    assert(args->count == 1);
     TestQuadraticSolver(ListGet(*args, 0, char*));
 }
 
 void TestCommand(list* args)
 {
+    assert(args);
     TestList();
 }
 
 void ScamCommand(list* args)
 {
+    assert(args);
     double a, b, c = 0;
     double x1, x2 = 0;
     int RootCount = 0;
 
-    RequestInput(&a, &b, &c);
+    RequestAnswer(&a, &b, &c);
     RootCount = SolveQuadratic(a, b, c, &x1, &x2);
 
     printf("CAPTCHA:\nSolve the following equations to prove you are a human\nWrite amount of roots (-1 if infinite) and each root\n");
@@ -80,4 +85,7 @@ void ScamCommand(list* args)
     OutputRoots(x1, x2, RootCount);
 }
 
-
+void DebugCommand(list* args)
+{
+    debug = 1;
+}

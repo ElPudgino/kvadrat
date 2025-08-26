@@ -59,10 +59,42 @@ int CompareStrings(char* str1, const char* str2);
 */
 ProgramParams ProcessArgs(int argc ,char** argv);
 
+
+/*! @brief Outputs solver result
+*
+* @param[in] x1 First roots
+* @param[in] x2 Second root
+* @param[in] nRoots Amount of roots
+*/
 void OutputRoots(double x1, double x2, int nRoots);
 
+/*! @brief Generate pseudo-random int
+*
+* @param[in] min Min value (inclusive)
+* @param[in] max Max value (exclusive)
+*
+* @return Random int from min inclusive to max exclusive
+*/
 int RandomRange(int min, int max);
 
+/*! @brief Request user to enter 3 valid coefficients
+*
+* @param[in] a First read value
+* @param[in] b Second read value
+* @param[in] c Third read value
+*
+* @return 1
+*/
 int RequestInput(double* a, double* b, double* c);
+
+/*! @brief Request user to enter roots of the equation
+*
+* @param[in] a Roots amount entered
+* @param[in] b First root entered
+* @param[in] c Second root entered
+*
+* @return 1
+*/
+int RequestAnswer(double* a, double* b, double* c);
 
 #endif
