@@ -12,7 +12,7 @@ typedef struct
 /*! @brief Tests quadratic solver using predefined values
 * @return 1 if all tests are OK 0 otherwise
 */
-int TestQuadraticSolver();
+int TestQuadraticSolver(char* test_file);
 
 /*! @brief Runs a single solver test
 *

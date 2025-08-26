@@ -6,28 +6,21 @@
 #include "constants.h"
 #include "tests.h"
 #include "list_tests.h"
+#include "commands.h"
+#include "run_app.h"
 
 int RequestInput(double* a, double* b, double* c);
 
-void Run_App();
 
 
 int main(int argc, char** argv)
 {
-    ProgramParams p_params = ProcessArgs(argc, argv);
 
-    if (p_params.test_solver)
-    {
-        TestQuadraticSolver();
-    }
-    if (p_params.test_list)
-    {
-        TestList();
-    }
-    if (!p_params.skip_main)
-    {
-        Run_App();
-    }
+    list cmds = SetupCommands();
+
+    ProcessArgs(&cmds, argc,  argv);
+
+    ListBegone(cmds);
 
     return 0;
 }
@@ -62,27 +55,7 @@ void Run_App()
 
     RootCount = SolveQuadratic(a, b, c, &x1, &x2);
 
-    PolishOutput(&x1);
-    PolishOutput(&x2);
-
-    switch (RootCount)
-    {
-        case NO_ROOTS:
-            printf("No roots\n");
-        break;
-        case ONE_ROOT:
-            printf("One root: %lf \n", x1);
-        break;
-        case TWO_ROOTS:
-            printf("Two roots: %lf, %lf \n", x1, x2);
-        break;
-        case INF_ROOTS:
-            printf("Infinite roots\n");
-        break;
-        default:
-            printf("Error: Unexpected root count");
-        break;
-    }
+    OutputRoots(x1, x2, RootCount);
 }
 
 

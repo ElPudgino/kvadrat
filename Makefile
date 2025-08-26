@@ -6,10 +6,10 @@ o = ObjectFiles/
 s = Source/
 
 all : prog testing
-	$(CXX) $(CXXFLAGS) $(o)tools.o $(o)solvers.o $(o)main.o $(o)tests.o $(o)list.o $(o)list_tests.o $(o)readtests.o -o prog
+	$(CXX) $(CXXFLAGS) $(o)commands_def.o $(o)commands.o $(o)tools.o $(o)solvers.o $(o)main.o $(o)tests.o $(o)list.o $(o)list_tests.o $(o)readtests.o -o prog
 
 
-prog : tools.o solvers.o main.o list.o readtests.o
+prog : tools.o solvers.o main.o list.o readtests.o commands.o commands_def.o
 
 list.o : $(s)list.cpp
 	$(CXX) $(CXXFLAGS) -c $(s)list.cpp -o $(o)list.o
@@ -25,6 +25,12 @@ main.o : $(s)main.cpp
 
 solvers.o : $(s)solvers.cpp
 	$(CXX) $(CXXFLAGS) -c $(s)solvers.cpp -o $(o)solvers.o
+
+commands_def.o : $(s)commands_def.cpp
+	$(CXX) $(CXXFLAGS) -c $(s)commands_def.cpp -o $(o)commands_def.o
+
+commands.o : $(s)commands.cpp
+	$(CXX) $(CXXFLAGS) -c $(s)commands.cpp -o $(o)commands.o
 
 
 testing : tests.o list_tests.o

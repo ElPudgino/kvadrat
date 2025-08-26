@@ -48,7 +48,7 @@ void PolishOutput(double*);
 *
 * @return 1 if equal 0 otherwise
 */
-int CompareStrings(char* str1, char const* str2);
+int CompareStrings(char* str1, const char* str2);
 
 /*! @brief Parses program arguments
 *
@@ -58,5 +58,7 @@ int CompareStrings(char* str1, char const* str2);
 * @return Struct with field set to 1 or 0 depending on args
 */
 ProgramParams ProcessArgs(int argc ,char** argv);
+
+void OutputRoots(double x1, double x2, int nRoots);
 
 #endif

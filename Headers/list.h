@@ -1,6 +1,7 @@
 #ifndef LIST_H
 #define LIST_H
 
+
 /*! @brief Dynamic size array
 *
 * arr is a pointer to the stored data array

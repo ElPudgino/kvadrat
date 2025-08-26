@@ -7,7 +7,7 @@
 *
 * @param[in] list_ptr Pointer to list where read data will be stored
 */
-void ReadTestData(list* list_ptr);
+int ReadTestData(list* list_ptr, char* test_file);
 
 
 #endif

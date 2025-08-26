@@ -4,13 +4,15 @@
 #include "readtests.h"
 
 
-void ReadTestData(list* list_ptr)
+int ReadTestData(list* list_ptr, char* test_file)
 {
-    FILE* file = fopen("Tests/SolverTests","r");
+    char file_name[100] = {};
+    snprintf(file_name, sizeof(file_name), "%s%s", "Tests/", test_file);
+    FILE* file = fopen(file_name,"r");
     if (file == NULL)
     {
-        printf("No SolverTests found");
-        return;
+        printf("No Tests found\n");
+        return 0;
     }
 
     while (true)
@@ -26,11 +28,12 @@ void ReadTestData(list* list_ptr)
         }
         else
         {
-            return;
+            return 1;
         }
         fgetc(file);
     }
     fclose(file);
+    return 1;
 }
 
 

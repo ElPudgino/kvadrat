@@ -1,0 +1,68 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <cassert>
+#include "list.h"
+#include "commands.h"
+#include "run_app.h"
+#include "commands_def.h"
+#include "tools.h"
+#include "solvers.h"
+#include "tests.h"
+
+
+command DefSolve()
+{
+    command solve = {};
+    solve.name = "--solve";
+    solve.short_name = "-s";
+    solve.f_ptr = &SolveCommand;
+    solve.args_count = 0;
+    return solve;
+}
+
+void SolveCommand(list* args)
+{
+    Run_App();
+}
+
+command DefCoef()
+{
+    command coef = {};
+    coef.name = "--coef";
+    coef.short_name = "-c";
+    coef.f_ptr = &CoefCommand;
+    coef.args_count = 3;
+    return coef;
+}
+
+void CoefCommand(list* args)
+{
+    assert(args);
+    assert(args->count == 3);
+
+    double a, b, c = 0;
+    char** e1 = NULL;
+    a = strtod(ListGet(*args, 0, char*),e1);
+    b = strtod(ListGet(*args, 1, char*),e1);
+    c = strtod(ListGet(*args, 2, char*),e1);
+
+    double x1, x2 = 0;
+    int nRoots = SolveQuadratic(a, b, c, &x1, &x2);
+
+    OutputRoots(x1, x2, nRoots);
+}
+
+command DefFile()
+{
+    command file = {};
+    file.name = "--file";
+    file.short_name = "-f";
+    file.f_ptr = &FileCommand;
+    file.args_count = 1;
+    return file;
+}
+
+void FileCommand(list* args)
+{
+    TestQuadraticSolver(ListGet(*args, 0, char*));
+}

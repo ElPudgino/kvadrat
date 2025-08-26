@@ -3,6 +3,9 @@
 #include <cassert>
 #include "constants.h"
 #include "tools.h"
+#include "list.h"
+#include "commands.h"
+#include "solvers.h"
 
 void ClearInput()
 {
@@ -41,12 +44,13 @@ void PolishOutput(double* num)
     }
 }
 
-int CompareStrings(char* str1, char const* str2)
+int CompareStrings(char* str1, const char* str2)
 {
     assert(str1);
     assert(str2);
 
     int index = 0;
+
 
     while (str1[index] != '\0' && str2[index] != '\0')
     {
@@ -56,24 +60,38 @@ int CompareStrings(char* str1, char const* str2)
         }
         index += 1;
     }
-
+    if (str1[index] != str2[index])
+    {
+        return 0;
+    }
 
     return 1;
 }
 
-#define CheckForParam(prm) if (CompareStrings(argv[1+index], "-"#prm)) { p_params.prm = 1; }
-
-ProgramParams ProcessArgs(int argc ,char** argv)
+void OutputRoots(double x1, double x2, int nRoots)
 {
-    ProgramParams p_params = {};
+    PolishOutput(&x1);
+    PolishOutput(&x2);
 
-    int index = 0;
-    for (index = 0; index < (argc-1); index += 1)
+    switch (nRoots)
     {
-        CheckForParam(skip_main);
-        CheckForParam(test_solver);
-        CheckForParam(test_list);
+        case NO_ROOTS:
+            printf("No roots\n");
+        break;
+        case ONE_ROOT:
+            printf("One root: %lf \n", x1);
+        break;
+        case TWO_ROOTS:
+            printf("Two roots: %lf, %lf \n", x1, x2);
+        break;
+        case INF_ROOTS:
+            printf("Infinite roots\n");
+        break;
+        default:
+            printf("Error: Unexpected root count");
+        break;
     }
-
-    return p_params;
 }
+
+
+

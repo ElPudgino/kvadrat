@@ -21,14 +21,14 @@ void TestSolverSingle(TestParams tps, int* res)
     }
 }
 
-int TestQuadraticSolver()
+int TestQuadraticSolver(char* test_file)
 {
     int res = 1;
     list t_list;
 
     ListInit(t_list, TestParams);
 
-    ReadTestData(&t_list);
+    res *= ReadTestData(&t_list, test_file);
 
     size_t test_ind = 0;
 
