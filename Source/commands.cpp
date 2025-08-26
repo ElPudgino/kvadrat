@@ -24,6 +24,9 @@ list SetupCommands(void)
     command file = DefFile();
     ListAdd(Commands, file);
 
+    command test = DefTest();
+    ListAdd(Commands, test);
+
     return Commands;
 }
 

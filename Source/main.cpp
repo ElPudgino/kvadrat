@@ -15,13 +15,15 @@ int RequestInput(double* a, double* b, double* c);
 
 int main(int argc, char** argv)
 {
-
+    printf("\"\" - ");
     list cmds = SetupCommands();
 
     ProcessArgs(&cmds, argc,  argv);
 
     ListBegone(cmds);
 
+
+    printf("\nxXx_COMMIT GITHUB_xXx\n");
     return 0;
 }
 

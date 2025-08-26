@@ -8,6 +8,7 @@
 #include "tools.h"
 #include "solvers.h"
 #include "tests.h"
+#include "list_tests.h"
 
 
 command DefSolve()
@@ -24,6 +25,7 @@ void SolveCommand(list* args)
 {
     Run_App();
 }
+
 
 command DefCoef()
 {
@@ -52,6 +54,7 @@ void CoefCommand(list* args)
     OutputRoots(x1, x2, nRoots);
 }
 
+
 command DefFile()
 {
     command file = {};
@@ -65,4 +68,20 @@ command DefFile()
 void FileCommand(list* args)
 {
     TestQuadraticSolver(ListGet(*args, 0, char*));
+}
+
+
+command DefTest()
+{
+    command test = {};
+    test.name = "--test";
+    test.short_name = "-t";
+    test.f_ptr = &TestCommand;
+    test.args_count = 0;
+    return test;
+}
+
+void TestCommand(list* args)
+{
+    TestList();
 }
