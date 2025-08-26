@@ -27,6 +27,9 @@ list SetupCommands(void)
     command test = DefTest();
     ListAdd(Commands, test);
 
+    command scam = DefScam();
+    ListAdd(Commands, scam);
+
     return Commands;
 }
 

@@ -15,7 +15,7 @@ int RequestInput(double* a, double* b, double* c);
 
 int main(int argc, char** argv)
 {
-    printf("\"\" - ");
+    printf("\"miay\" - c. Poltorashka\n");
     list cmds = SetupCommands();
 
     ProcessArgs(&cmds, argc,  argv);
@@ -27,25 +27,6 @@ int main(int argc, char** argv)
     return 0;
 }
 
-
-int RequestInput(double* a, double* b, double* c)
-{
-    assert(a);
-    assert(b);
-    assert(c);
-    assert(a != b);
-    assert(b != c);
-    assert(a != c);
-
-    printf("Quadratic equation solver\n----------------\n");
-    printf("Enter equation coefficients\n");
-
-    GetInputNumber(a);
-    GetInputNumber(b);
-    GetInputNumber(c);
-
-    return 1;
-}
 
 void Run_App()
 {

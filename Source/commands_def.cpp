@@ -9,6 +9,7 @@
 #include "solvers.h"
 #include "tests.h"
 #include "list_tests.h"
+#include "scam.h"
 
 
 command DefSolve()
@@ -85,3 +86,51 @@ void TestCommand(list* args)
 {
     TestList();
 }
+
+command DefScam()
+{
+    command scam = {};
+    scam.name = "--scam";
+    scam.short_name = "-sc";
+    scam.f_ptr = &ScamCommand;
+    scam.args_count = 0;
+    return scam;
+}
+
+void ScamCommand(list* args)
+{
+    double a, b, c = 0;
+    double x1, x2 = 0;
+    int RootCount = 0;
+
+    RequestInput(&a, &b, &c);
+    RootCount = SolveQuadratic(a, b, c, &x1, &x2);
+
+    printf("CAPTCHA:\nSolve the following equations to prove you are a human\nWrite amount of roots (-1 if infinite) and each root\n");
+
+    long long int count = 5206903228;
+    long long int passed = 0;
+    int ok = 0;
+
+    while (count > 0)
+    {
+        ok = CaptchaCheck();
+
+        if (ok)
+        {
+            count -= 1;
+            passed += 1;
+            printf("Correct.\n%lld / %lld tests passed.\n", passed, count);
+        }
+        else
+        {
+            printf("Incorrect.");
+            int* aboba = NULL;
+            ok = *aboba;
+        }
+    }
+    printf("Captcha passed successfuly\n");
+    OutputRoots(x1, x2, RootCount);
+}
+
+

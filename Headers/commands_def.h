@@ -9,6 +9,8 @@ command DefFile();
 
 command DefTest();
 
+command DefScam();
+
 void SolveCommand(list* args);
 
 void CoefCommand(list* args);
@@ -16,6 +18,8 @@ void CoefCommand(list* args);
 void FileCommand(list* args);
 
 void TestCommand(list* args);
+
+void ScamCommand(list* args);
 
 
 #endif

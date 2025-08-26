@@ -61,4 +61,8 @@ ProgramParams ProcessArgs(int argc ,char** argv);
 
 void OutputRoots(double x1, double x2, int nRoots);
 
+int RandomRange(int min, int max);
+
+int RequestInput(double* a, double* b, double* c);
+
 #endif

@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <math.h>
+#include <stdlib.h>
+#include <time.h>
 #include <cassert>
 #include "constants.h"
 #include "tools.h"
@@ -93,5 +95,29 @@ void OutputRoots(double x1, double x2, int nRoots)
     }
 }
 
+int RandomRange(int min, int max)
+{
+    srand(time(NULL));
+    int range = (max - min);
+    int add = rand() % range;
+    return min + add;
+}
 
+int RequestInput(double* a, double* b, double* c)
+{
+    assert(a);
+    assert(b);
+    assert(c);
+    assert(a != b);
+    assert(b != c);
+    assert(a != c);
+
+    printf("Enter equation coefficients\n");
+
+    GetInputNumber(a);
+    GetInputNumber(b);
+    GetInputNumber(c);
+
+    return 1;
+}
 

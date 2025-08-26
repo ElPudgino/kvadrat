@@ -6,10 +6,10 @@ o = ObjectFiles/
 s = Source/
 
 all : prog testing
-	$(CXX) $(CXXFLAGS) $(o)commands_def.o $(o)commands.o $(o)tools.o $(o)solvers.o $(o)main.o $(o)tests.o $(o)list.o $(o)list_tests.o $(o)readtests.o -o prog
+	$(CXX) $(CXXFLAGS) $(o)commands_def.o $(o)commands.o $(o)scam.o $(o)tools.o $(o)solvers.o $(o)main.o $(o)tests.o $(o)list.o $(o)list_tests.o $(o)readtests.o -o prog
 
 
-prog : tools.o solvers.o main.o list.o readtests.o commands.o commands_def.o
+prog : tools.o solvers.o main.o list.o readtests.o commands.o commands_def.o scam.o
 
 list.o : $(s)list.cpp
 	$(CXX) $(CXXFLAGS) -c $(s)list.cpp -o $(o)list.o
@@ -40,6 +40,10 @@ tests.o : $(s)tests.cpp
 
 list_tests.o : $(s)list_tests.cpp
 	$(CXX) $(CXXFLAGS) -c $(s)list_tests.cpp -o $(o)list_tests.o
+
+
+scam.o : $(s)scam.cpp
+	$(CXX) $(CXXFLAGS) -c $(s)scam.cpp -o $(o)scam.o
 
 
 clean:
